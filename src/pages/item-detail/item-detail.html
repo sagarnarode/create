@@ -1,0 +1,88 @@
+
+<ion-content>
+ 
+    
+    <!-- <div style="position: absolute;left: 10px;font-size: 25px;z-index: 2;color:orange;" (click)="slidePrev()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </div>
+    <div style="position: absolute;right: 10px;font-size: 25px;z-index: 2;color: orange;" (click)="slideNext()">
+      <ion-icon name="arrow-forward"></ion-icon>
+    </div> -->
+   <ion-row style="background-color: orange;font-size: x-large;">
+  <ion-col col-1 style="color: white;text-align:center;">
+    <ion-icon name="arrow-back" (click)='backbtn()'></ion-icon>
+   </ion-col>
+   <ion-col style="text-align:center;color: white;">
+     Book Appoitment
+  </ion-col>
+   </ion-row>
+   <ion-card style='margin: 0px;width: calc(100% - 0px);'>
+
+    <ion-item>
+      <ion-avatar item-start>
+        <img [src]="DoctInfo.dImage">
+      </ion-avatar>
+      <h2>{{DoctInfo.dName}}</h2>
+      <hr>
+      <p>{{DoctInfo.specialization}}</p>
+   
+    </ion-item>
+  </ion-card>
+    <ion-slides (ionSlideDidChange)="slideChanged()" pager spaceBetween="10"   slidesPerView="4" style="height:22%;background-color: orange">
+      <ion-slide *ngFor="let item of dateObject; let idx = index" class='date'   (click)='selectDate(idx,item)' [class.selectedDate]="idx === currentSelectedDate">
+        <p style="font-size: small;">{{item.day}}</p>
+        <p style="font-size: xx-large;margin: auto;">{{item.date}}</p>
+        <p style="font-size: small;">{{item.month}}</p>
+      </ion-slide>
+      
+    </ion-slides>
+    
+  
+ <ion-card style="margin: 0px;width: 100%;">
+  <ion-row>
+    <ion-col col-6   *ngFor="let TimeData of arrCatimages; let idx = index" > <button ion-button [class.selected]="idx === currentSelected"  (click)="onItemClicked(TimeData, idx)"  block [disabled]="TimeData.status=='Full'"  color="light">
+      {{TimeData.slot}}
+    </button></ion-col>
+  </ion-row>
+  </ion-card>
+
+  <ion-card style="margin: 0px;width: 100%;">
+  
+      <ion-item>
+        patients
+        <ion-icon name="person-add" item-end  style="color:orange ;" (click)='addnewDependant()'></ion-icon>
+      </ion-item>
+      <ion-list radio-group [(ngModel)]='getDependantList'>
+        <ion-item  *ngFor="let depen of dependantList">
+          <ion-label>{{depen.name}}</ion-label>
+          <ion-radio  [value]="depen"></ion-radio>
+        </ion-item>
+      
+        
+      </ion-list>
+    
+    <!-- <ion-col col-12  *ngIf="!dependantList">
+      <button ion-button   block   style="background-color: orange;" (click)='addnewDependant()'   icon-start >
+        <ion-icon name='add'></ion-icon>
+        Add Dependant 
+      </button>
+    </ion-col> -->
+    </ion-card>
+
+  <ion-card style="margin: 0px;width: 100%;">
+
+   <!-- style="font-size: 1.2rem" -->
+   <ion-textarea class="border" overflow-scroll="true" pattern="[A-Za-z0-9? ]" rows="4"  (keyup)="ChangeCount($event)" [(ngModel)]='ngMdescribereasonforvisit' placeholder='Please describe the reason for visit. ' style="border-bottom: 1px dashed;"></ion-textarea>
+
+</ion-card>
+
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button   block [disabled]="!(ngMdescribereasonforvisit && getDependantList  )"   style="background-color: orange;font-size: large;" (click)='confirmAppoitment(ngMdescribereasonforvisit,getDependantList)'   icon-start >
+      <ion-icon name='calendar'></ion-icon>
+      Book Appoitment 
+    </button>
+  </ion-toolbar>
+</ion-footer>

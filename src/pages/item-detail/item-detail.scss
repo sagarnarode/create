@@ -1,0 +1,45 @@
+page-item-detail {
+  
+.card-header-md {
+  font-size: 1.9rem;
+  color: #222;
+  padding: 16px;
+  text-align: center;
+  color: white;
+  background-color: orange;
+  color: orange;
+}
+.time{
+    text-align: center;
+    background-color: whitesmoke;
+    padding: 3px;
+    border: 5px solid white;
+    border-radius: 13px;
+}
+.swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets {
+  left: 0;
+  bottom: 0px;
+  width: 100%;
+}
+.swiper-pagination-bullet-active {
+  background: #ffffff;
+  opacity: 1;
+}
+.selected{
+  background-color: orange;
+  color: white;
+  }
+  .date{
+    color: white;
+  }
+  .selectedDate{
+    color: crimson;
+    }
+    .red-text {
+      color: red;
+  }
+  .item-radio-checked.item-md ion-label {
+    color: #FF9800;
+}
+}
+

@@ -1,0 +1,105 @@
+
+<ion-content padding>
+<!-- <ion-row>
+  <ion-col col-12>
+    
+      <ion-searchbar #q type="number" no-padding placeholder="Request / REF #"  pattern="[0-9]*"  color="transparent" id="searchClaimByEob" (keyup.backspace)="onCancel(q.value)" (ionClear)="onClear($event)" (keyup.enter)="searchMessagae(q.value)" (keypress)='isNumberKey($event)' [showCancelButton]="true"></ion-searchbar>
+     </ion-col>
+    <ion-col col-12 *ngIf="searchError">
+      <span  color="danger">INVALID REQUEST / REF</span>
+    </ion-col>
+</ion-row> -->
+<ion-card *ngFor='let his of historyData; let i=index' [ngClass]="{'Completed1' : his.status == 'Completed','notCompleted' : his.status != 'Completed'}">
+  <ion-item>
+    <ion-row style="padding: 5px;">
+    <ion-col col-4 class="text-semibold requestID" >{{his.id}}</ion-col>
+    <ion-col col-4 style="font-size:1.4rem;font-weight: 600;padding: 0px 5px;" >{{his.patient_name}}</ion-col>
+   <ion-col col-4 class="text-semibold status"><span class="status-value">{{his.status}}</span>
+     <div *ngIf="his.status!='In Progress'" class={{his.status}}></div>
+     <div *ngIf="his.status=='In Progress'" class='Inprogress'></div>
+   </ion-col>
+  </ion-row>
+
+  </ion-item>
+<ion-card-content style="padding: 0px 15px;">
+  <ion-row style="padding: 5px;" *ngIf='his.problem'>
+    <ion-col col-12 class="text-semibold requestID" >{{his.problem}}</ion-col>
+    </ion-row>
+    <ion-row style="padding: 5px;" *ngIf='his.doctor_name || his.department'>
+      <ion-col col-6 class="text-semibold requestID" *ngIf='his.doctor_name'>  
+        Dr.{{his.doctor_name}}</ion-col>
+      <ion-col col-6 class="text-semibold requestID" >{{his.department}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col >
+          <button ion-button clear size="small" style="color:orange">{{his.appointmentdate}}</button>
+        
+        </ion-col>
+        <ion-col >
+          <button ion-button size="small" clear style="color:orange">{{his.timeSlot}}</button>
+        
+        </ion-col>
+        <ion-col   class="button-col">
+          <ion-icon name="trash" *ngIf="his.status=='Pending'"  style="font-size: 2.2em;padding: inherit;color:orange;" (click)="deleteAppoitment(his.id)"></ion-icon>
+          <ion-icon name="attach" *ngIf="his.attachmentAvailable" style="font-size: 2.2em;padding: inherit;color:orange;" (click)='openAttachment(his.id)' ></ion-icon>
+          <!-- <ion-icon name="document" style="font-size: 2.2em;padding: inherit;color:orange;" ></ion-icon> -->
+        </ion-col>
+        </ion-row>
+</ion-card-content>
+
+</ion-card>
+<!-- <ion-list  style="margin: 0px;" >
+  <ion-item class="message-list"  *ngFor='let his of historyData; let i=index'>
+   
+      <ion-row (click)='gotoDetailpage(his)'>
+        
+        <ion-col col-4 class="text-semibold requestID" >{{his.id}}</ion-col>
+         <ion-col col-4 style="font-size:1.4rem;font-weight: 600;padding: 0px 5px;" >{{his.patient_name}}</ion-col>
+        <ion-col col-4 class="text-semibold status"><span class="status-value">{{his.status}}</span>
+          <div *ngIf="his.status!='In Progress'" class={{his.status}}></div>
+          <div *ngIf="his.status=='In Progress'" class='Inprogress'></div>
+        </ion-col>
+      </ion-row>
+      <ion-row style="padding: 5px;" *ngIf='his.problem'>
+        <ion-col col-12 class="text-semibold requestID" >{{his.problem}}</ion-col>
+        </ion-row>
+        <ion-row style="padding: 5px;" *ngIf='his.doctor_name || his.department'>
+          <ion-col col-6 class="text-semibold requestID" *ngIf='his.doctor_name'>Dr.{{his.doctor_name}}</ion-col>
+          <ion-col col-6 class="text-semibold requestID" >{{his.department}}</ion-col>
+          </ion-row>
+        
+        <ion-row>
+      <ion-col col-8 no-padding >
+
+        <ion-row (click)='gotoDetailpage(listOfData)'  >
+          <ion-col col-6 style="padding:0px">
+            <span   class="category-key-right-new"  text-uppercase >Date 
+            </span>
+        </ion-col>
+          <ion-col col-6 class="category-key" style="padding:0px" text-uppercase>Time</ion-col>
+        </ion-row>
+        <ion-row (click)='gotoDetailpage(listOfData)' >
+          <ion-col col-6 style="padding:0px">
+            <span  class="category-value-right" >{{his.appointmentdate}}</span>
+        </ion-col>
+       
+          <ion-col col-6 class="category-value" style="padding:2px" >{{his.timeSlot}}</ion-col>
+        </ion-row>
+      </ion-col>
+
+      <ion-col col-4 no-padding class="button-col">
+        <ion-icon name="trash" *ngIf="his.status=='Pending'"  style="font-size: 2.2em;padding: inherit;color:orange;" (click)="deleteAppoitment(his.id)"></ion-icon>
+        <ion-icon name="attach" *ngIf="his.attachmentAvailable" style="font-size: 2.2em;padding: inherit;color:orange;" (click)='openAttachment(his.id)' ></ion-icon>
+      </ion-col>
+      </ion-row>
+    
+
+    
+  </ion-item>
+</ion-list> -->
+<ion-fab left bottom (click)="scrollToTop()" >
+  <button ion-fab style="background-color:orange">
+    <ion-icon name="arrow-up"></ion-icon>
+  </button>
+</ion-fab>
+</ion-content>

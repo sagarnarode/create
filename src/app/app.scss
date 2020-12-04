@@ -1,0 +1,84 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+.button-clear-md-primary {
+
+    color: orange;
+ 
+}
+.item-md ion-avatar ion-img, .item-md ion-avatar img 
+{
+    width: 100px;
+    height: 100px;
+}
+.toolbar-background-md {
+   
+    background: white;
+}
+.tabs-md .tab-button[aria-selected=true] .tab-button-icon {
+    color: orange;
+   
+}
+.tabs-md .tab-button[aria-selected=true] {
+    color: orange;
+}
+.alert-md .alert-radio-inner {
+    background-color: orange;
+}
+.alert-md .alert-radio-label {
+    color: orange;
+}
+.alert-md [aria-checked=true] .alert-radio-icon {
+    border-color: orange;
+}
+.alert-md [aria-checked=true] .alert-radio-label {
+    color: orange;
+}
+.alert-md .alert-button {
+    color: orange;
+}
+.alert-md .alert-head {
+    background-color: orange;
+    color: white;
+}
+.attachment-popup > .popover-wrapper > .popover-content{
+    width: 98%;
+    margin: 0px;
+    margin: 0 0px 0 0 !important;
+    right: 3px;
+    left: 4px;
+    top: 25% !important;}
+    .attachment-popup{
+        ion-backdrop{
+            opacity: 0.8;
+        }
+    }
+.contactpopover{
+    width: 98%;
+    margin: 0px;
+    margin: 0 0px 0 0 !important;
+    right: 3px;
+    top: 15%; }
+
+    
+  
+    .toast-container{
+        background:white;
+    }
+    
+    .toast-md .toast-message{
+        color: orange;
+    }

@@ -1,0 +1,171 @@
+page-login {
+//     .login-bg{
+//     	background: url('../assets/img/medical_professional__1_-removebg-preview (1).png') no-repeat center center / cover;
+//     }
+  
+  .form-wrap
+    {
+       
+        padding: 15px;
+    }
+    .login-wrap{
+    	display: flex;
+    	align-items: stretch;
+    	justify-content: space-between;
+        padding: 0px;
+        margin-top: 58%;
+    }
+    .login-wrap .form-wrap{
+    	width: 100%;
+    	position: relative;
+    }
+    .login-wrap .form-wrap .item{
+    	background: transparent;
+    	padding: 0px;
+    }
+   
+    .login-wrap .form-wrap .item.pass.item-input,
+    .login-wrap .form-wrap .item.pass.item-input:focus,
+    .login-wrap .form-wrap .item.pass.item-input-has-focus{
+        border: none !important;   
+        box-shadow: none !important;
+    } 
+    
+    .login-wrap .form-wrap .item.pass .item-inner{
+        display: flex;
+        align-items: flex-end;
+        border: none !important;
+    }
+    .login-wrap .form-wrap .item.pass.fingerPrint .item-inner{
+    	border-bottom:none;
+    }
+    .login-wrap .form-wrap .item.remember .item-inner{
+    	border-bottom: none !important;
+    }
+    .login-wrap .form-wrap .item.remember .item-inner .input-wrapper,
+    .login-wrap .form-wrap .item.fingerPrint .item-inner .input-wrapper{
+    	flex: 0 0 auto;
+        align-items:center;
+    }
+	.footer{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+        bottom: 0px;
+	}
+	
+    .login-btn .button-inner{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .login-btn .login-arrow{
+        width: 22px;
+        margin: 0 5px;
+    }
+    .hospitalName{
+        font-size: xx-large;
+        font-family: auto;
+        margin-top: 5%;
+        /* margin-left: 10%; */
+        text-align: center;
+        color: orange;
+    }
+    .button-clear-md {
+       
+        color: orange;
+        
+    }
+ion-content{
+    // background-image: linear-gradient(225deg, #b739f3 0%, #6850fb 100%);
+    background-image: linear-gradient(225deg, #FF9800 0%, #ff1100 100%);
+
+        .scroll-content{
+            margin-top: 0!important;
+            padding-bottom: 0%!important;
+        }
+ }
+ .signcard
+ {
+     margin-top: 0%;
+    //  height: 80%;
+     border-radius: 13px;
+     box-shadow: 0px 20px 20px rgba(0,0,0,0.08);
+     background-color: #FFFFFF;
+     z-index:2;
+     margin: 15px;
+
+     
+ }
+
+ .detailsholder{
+     ion-label{
+         color:rgb(137,137,137);;
+     }
+     ion-input{
+         background-color: #f5f5f5;
+         border-radius: 4px;
+
+     }
+ }
+
+ .imgholder{
+     img{
+         width: 100px;
+         height: 100px;
+         //border-radius: 50%;
+        
+         //top:-10px;
+         position: relative;
+     }
+     width: 100px;
+     z-index: 3;
+     position: relative;
+     top:25px;
+     margin-left: 35%;
+     background: white;
+     border-radius: 50%;
+     border:solid;
+     border-color:white;
+    // margin-right: auto
+    
+ }
+
+ .segment-button.segment-activated {
+ border-color:orange !important;
+     opacity: 1;
+    // background-image: linear-gradient(225deg, #b739f3 0%, #6850fb 100%);
+ color:orange !important;
+ }
+
+  .error {
+        color: rgb(223, 62, 62);
+        font-size: 11px;
+      }
+    
+      .error1 {
+        color: rgb(75, 75, 75);
+        border-bottom: 1px solid #ff0000;
+      }
+      .otp{
+        display:inline-block;
+        width:35px;
+        height:50px;
+        margin:0px;
+        border-radius: 50%;
+        --background:#e1e1e1;
+        --padding-start:7px;
+        }
+        .otp .text-input-md{
+            border-bottom: 1px dashed;
+            text-align: center;
+            font-size: xx-large;
+        }
+        .toast-container{
+            background:orange;
+        }
+        
+        .toast-md .toast-message{
+            color: white;
+        }
+}

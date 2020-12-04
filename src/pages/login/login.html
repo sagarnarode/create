@@ -1,0 +1,224 @@
+
+<ion-content class="login-bg">
+
+<div class="imgholder" text-center>
+  <img [src]="avatarimage" alt="">
+</div>
+<div class="signcard" text-center>
+
+<ion-segment [(ngModel)]="signform">
+    <ion-segment-button (click)="changeAvatar()" class="segbtn1" value="login">
+      SignIn
+    </ion-segment-button>
+    <ion-segment-button (click)="changeAvatar()" class="segbtn2" value="signup">
+      Signup
+    </ion-segment-button>
+  </ion-segment>
+
+  
+<div class="loginform" [ngSwitch]="signform">
+  <div padding *ngSwitchCase="'login'">
+      <h2>Sign in</h2>
+      <form class="form-wrap"  [formGroup]="signupform">
+        <ion-list style="margin: 0px;">
+         
+        
+          <ion-item>
+            <ion-label stacked style="color:orange;font-size: large;">Email</ion-label>
+            <ion-input type="email" [(ngModel)]="userData.email" formControlName="email" [class.error1]="!signupform.controls.email.valid && signupform.controls.email.dirty" name="Email"></ion-input>
+          </ion-item>
+          <ion-item no-lines *ngIf="( signupform.get('email').hasError('minlength') || signupform.get('email').hasError('pattern') ||signupform.get('email').hasError('required') ) && signupform.get('email').touched">
+            <div class="error" *ngIf="signupform.get('email').hasError('required') && signupform.get('email').touched">
+              Please input your email
+            </div>
+            <div class="error" *ngIf="signupform.get('email').hasError('pattern') && signupform.get('email').touched">
+              Email address invalid
+            </div>
+          </ion-item>
+          <ion-item>
+            <ion-label stacked style="color: orange;font-size: large;">Password</ion-label>
+            <ion-input type="password" type="password" [(ngModel)]="userData.password" formControlName="password" [class.error1]="!signupform.controls.password.valid && signupform.controls.password.dirty" name="password"></ion-input>
+          </ion-item>
+          <ion-item no-lines *ngIf="( signupform.get('password').hasError('minlength') || signupform.get('password').hasError('maxlength') ||signupform.get('password').hasError('required') ) && signupform.get('password').touched">
+            <div class="error" *ngIf="signupform.get('password').hasError('required') && signupform.get('password').touched">
+              Please input your password
+            </div>
+            <div class="error" *ngIf="signupform.get('password').hasError('minlength') && signupform.get('password').touched">
+              Minimum 6 characters
+            </div>
+            <div class="error" *ngIf="signupform.get('password').hasError('maxlength') && signupform.get('password').touched">
+              Maximum 12 characters
+            </div>
+          </ion-item>
+          <div padding >
+            <button ion-button  block  round [disabled]="signupform.invalid" style="background-color: orange;font-size: large;" (tap)="doLogin()">SIGN IN</button>
+          </div>
+    
+        </ion-list>
+        <ion-row class="w-100">
+            
+            <ion-col col-6 text-left no-padding>
+              <button ion-button no-padding clear  id="forgot_password" tappable (click)="forgotPassword()">Forgot Password?</button>
+            </ion-col>
+            <!-- <ion-col col-6 text-right no-padding>
+              <button ion-button no-padding clear  id="forgot_username" tappable (click)="register()">Forgot UserName</button>
+            </ion-col> -->
+          </ion-row>
+          <ion-row text-center>
+      
+           
+              <ion-col col-12>
+                <p ion-text text-center style="color: orange;">Version 1.0 (V1)</p>
+                <p ion-text text-center style="color: orange;">powers by Cygnustics Software Pvt. Ltd.</p>
+
+              </ion-col>
+              
+              
+            </ion-row>
+      </form>
+     
+  </div>
+  
+  <div padding *ngSwitchCase="'signup'">
+      <h2>Signup</h2>
+      <form *ngIf='!showOtpPage' [formGroup]="registrationform">
+        <ion-row>
+            <ion-col>
+              <ion-list inset>
+    
+                <ion-item>
+                  <ion-input type="text" placeholder="Name" name="Rname" formControlName="rName" [(ngModel)]="registerCredentials.rName" required></ion-input>
+                </ion-item>
+                <ion-item no-lines *ngIf="( registrationform.get('rName').hasError('minlength') || registrationform.get('rName').hasError('pattern') ||registrationform.get('rName').hasError('required') ) && registrationform.get('rName').touched">
+                  <div class="error" *ngIf="registrationform.get('rName').hasError('required') && registrationform.get('rName').touched">
+                    Please input your name
+                  </div>
+                  <div class="error" *ngIf="registrationform.get('rName').hasError('pattern') && registrationform.get('rName').touched">
+                   Please enter valide name
+                  </div>
+                </ion-item>
+                <ion-item>
+                  <ion-input type="text" placeholder="Email" name="email" formControlName="rEmail" [(ngModel)]="registerCredentials.rEmail" required></ion-input>
+                </ion-item>
+                <ion-item no-lines *ngIf="( registrationform.get('rEmail').hasError('minlength') || registrationform.get('rEmail').hasError('pattern') ||registrationform.get('rEmail').hasError('required') ) && registrationform.get('rEmail').touched">
+                  <div class="error" *ngIf="registrationform.get('rEmail').hasError('required') && registrationform.get('rEmail').touched">
+                    Please input your email
+                  </div>
+                  <div class="error" *ngIf="registrationform.get('rEmail').hasError('pattern') && registrationform.get('rEmail').touched">
+                    Email address invalid
+                  </div>
+                </ion-item>
+                <ion-item >
+                    <ion-input type="text" placeholder="Mobile Number" name="mobile" formControlName="rMobile" [(ngModel)]="registerCredentials.rMobile" required></ion-input>
+                  </ion-item>
+                  <ion-item no-lines *ngIf="( registrationform.get('rMobile').hasError('minlength') || registrationform.get('rMobile').hasError('maxlength') || registrationform.get('rMobile').hasError('pattern') ||registrationform.get('rMobile').hasError('required') ) && registrationform.get('rMobile').touched">
+                  <div class="error" *ngIf="registrationform.get('rMobile').hasError('required') && registrationform.get('rMobile').touched">
+                    Please input your mobile number
+                  </div>
+                  <div class="error" *ngIf="registrationform.get('rMobile').hasError('pattern') && registrationform.get('rMobile').touched">
+                    Mobile number invalid
+                  </div>
+                  <div class="error" *ngIf="registrationform.get('rMobile').hasError('minlength') && registrationform.get('rMobile').touched">
+                      Minimum 10 digit required
+                    </div>
+                    <div class="error" *ngIf="registrationform.get('rMobile').hasError('maxlength') && registrationform.get('rMobile').touched">
+                      Maximum 10 digit required
+                    </div>
+                  </ion-item>
+                <ion-item>
+                  <ion-input type="password" placeholder="Password" name="password" formControlName="rPassword" [(ngModel)]="registerCredentials.rPassword" required></ion-input>
+                </ion-item>
+                <ion-item no-lines *ngIf="( registrationform.get('rPassword').hasError('minlength') || registrationform.get('rPassword').hasError('maxlength') ||registrationform.get('rPassword').hasError('required') ) && registrationform.get('rPassword').touched">
+                  <div class="error" *ngIf="registrationform.get('rPassword').hasError('required') && registrationform.get('rPassword').touched">
+                    Please input your rPassword
+                  </div>
+                  <div class="error" *ngIf="registrationform.get('rPassword').hasError('minlength') && registrationform.get('rPassword').touched">
+                    Minimum 6 characters
+                  </div>
+                  <div class="error" *ngIf="registrationform.get('rPassword').hasError('maxlength') && registrationform.get('rPassword').touched">
+                    Maximum 12 characters
+                  </div>
+                </ion-item>
+    
+                <ion-item>
+                  <ion-input type="password" placeholder="Confirm Password" formControlName="rConfirmation_password" name="confirmation_password" [(ngModel)]="registerCredentials.rConfirmation_password" required></ion-input>
+                </ion-item>
+                <ion-item no-lines *ngIf="( registrationform.get('rConfirmation_password').hasError('equalTo') || registrationform.get('rConfirmation_password').hasError('required') ) && registrationform.get('rConfirmation_password').touched">
+          
+                  <div class="error" *ngIf="registrationform.get('rConfirmation_password').hasError('required') && registrationform.get('rConfirmation_password').touched">
+                  Confirm password is required
+                  </div>
+                  <div class="error" *ngIf="registrationform.get('rConfirmation_password').hasError('equalTo') && registrationform.get('rConfirmation_password').touched">
+                  Password Mismatch
+                  </div>
+                </ion-item>   
+              </ion-list>
+            </ion-col>
+          </ion-row>
+    
+          <div padding >
+              <button ion-button   block  round [disabled]="registrationform.invalid" style="background-color: orange;font-size: large;" (tap)='registration(registerCredentials)'>Ragister</button>
+            </div>
+      
+    </form>
+    <ion-card *ngIf='showOtpPage'>
+
+      <ion-card-header>
+          <ion-card-header style="padding: 10px;">
+              Please ennter one time varification code sent to 
+            </ion-card-header>
+        
+          <ion-card-title style="text-align: center;">{{registerCredentials.rMobile}}</ion-card-title>
+        </ion-card-header>
+            <ion-card-content>
+                <ion-row text-center>
+                    <ion-col col-2 >
+                     <ion-input #otp1 required maxLength="1" class='otp' (keyup)="otpController($event,otp2,'')">
+                       
+                     </ion-input>
+                    </ion-col>
+                     <ion-col col-2>
+                     <ion-input #otp2 required maxLength="1" class='otp' (keyup)="otpController($event,otp3,otp1)">
+                     </ion-input>
+                    </ion-col>
+                    <ion-col col-2 >
+                     <ion-input #otp3 required maxLength="1"  class='otp' (keyup)="otpController($event,otp4,otp2)">
+                     </ion-input>
+                    </ion-col>
+                    <ion-col col-2 >
+                      <ion-input #otp4 required maxLength="1"  class='otp' (keyup)="otpController($event,otp5,otp3)">
+                      </ion-input>
+                     </ion-col>
+                     <ion-col col-2 >
+                      <ion-input #otp5 required maxLength="1"  class='otp' (keyup)="otpController($event,otp6,otp4)">
+                      </ion-input>
+                     </ion-col>
+                    <ion-col col-2 >
+                     <ion-input #otp6  required maxLength="1" class='otp' (keyup)="otpController($event,'',otp5)">
+                     </ion-input>
+                    </ion-col>
+                  </ion-row>
+            </ion-card-content>
+        
+            <ion-row class="already w-100">
+              <ion-col col-12 text-right>
+                  <span ion-text tappable   id="resendOtpTime" style="color:orange ;"></span>
+              </ion-col>
+                <ion-col col-12 text-center>
+                  <button no-padding ion-button  clear >
+                    <span ion-text tappable (click)="varifyOtp(otp1,otp2,otp3,otp4,otp5,otp6,registerCredentials)"  id="register" style="color:orange ;" >Varify OTP</span>
+                  </button>
+                </ion-col>
+                <ion-col col-12 text-center>
+                  <button no-padding ion-button *ngIf='showResendButton'  clear >
+                    <span ion-text tappable (click)="resendOtp(registerCredentials.rMobile)"  id="register" style="color:orange ;">Resend OTP</span>
+                  </button>
+                </ion-col>
+              </ion-row>
+          </ion-card>
+  </div>
+
+</div>
+</div>
+ 
+</ion-content>

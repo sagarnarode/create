@@ -1,0 +1,144 @@
+
+<ion-content>
+  <!-- <ion-card>
+    <ion-card-header>
+      <ion-item (click)="showvaccination= !showvaccination">
+        vaccination
+        <ion-icon name="medkit" item-end  style="color:orange ;"></ion-icon>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content *ngIf='showvaccination' style="padding: 5px 5px;height: 200px;overflow: scroll;">
+      
+      <ion-row>
+        <ion-col col-7>vaccine</ion-col>
+        <ion-col col-3>Date</ion-col>
+        <ion-col col-2>Weight</ion-col>
+      </ion-row>
+      <ion-row *ngFor="let a of vaccine">
+        <ion-col col-7>BCG ()Born to 3 months</ion-col>
+        <ion-col col-3>2020-03-07</ion-col>
+        <ion-col col-2>70</ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card> -->
+  <ion-card>
+    <ion-card-header>
+      <ion-item (click)="showMember= !showMember">
+         Member List
+        <ion-icon name="contacts" item-end  style="color:orange ;"></ion-icon>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content *ngIf='showMember'>
+      
+      <ion-item *ngFor='let depe of dependantList'>
+      
+        <ion-note >
+          {{depe.name}}
+        </ion-note>
+      </ion-item>
+      
+    </ion-card-content>
+  </ion-card>
+<ion-card>
+  <ion-card-header>
+    <ion-item (click)="showDependant= !showDependant">
+      
+        Add Dependant
+      <ion-icon name="person-add" item-end  style="color:orange ;"></ion-icon>
+    </ion-item>
+  </ion-card-header>
+  <ion-card-content *ngIf='showDependant'>
+    <ion-row text-center>
+      <ion-col col-6 >
+       <ion-input placeholder="Name" [(ngModel)]='newDepeName' required  class='otp'>
+         
+       </ion-input>
+      </ion-col>
+       <ion-col col-4 (ionChanged)='datechange($event)'   ion-datepicker  [(value)]="localDate">
+        <ion-input placeholder="DOB" [(ngModel)]='localDateFormated'   class='otp' readonly>
+
+       </ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-icon name="calendar" (ionChanged)='datechange($event)'   ion-datepicker  [(value)]="localDate" style="color:orange ;font-size: 2.2em;"></ion-icon> 
+      </ion-col>
+      </ion-row>
+      <!-- <ion-row text-center >
+        
+       
+        <ion-col col-10 >
+         
+          </ion-input>
+       
+        </ion-col>
+        <ion-col>
+          <ion-icon name="calendar" (ionChanged)='datechange($event)'   ion-datepicker  [(value)]="localDate" style="color:orange ;font-size: 2.2em;"></ion-icon> 
+        </ion-col>
+        
+      </ion-row> -->
+      <ion-row text-center>
+        <ion-col col-8 >
+          <ion-item >
+            <ion-label class="text-md-blue">Relation</ion-label>
+            <ion-select class="select-container"  [(ngModel)]='newDepeReleation' style="padding: 0px;" >
+              <ion-option value='Son'>Son</ion-option>
+              <ion-option value='Daughter'>Daughter</ion-option>    
+              <ion-option value='Other'>Other</ion-option>    
+            </ion-select>
+          </ion-item>
+        </ion-col>
+         <ion-col col-4>
+          <button ion-button   block [disabled]="!(newDepeName  && newDepeReleation)"   style="background-color: orange;font-size: large;" (click)='addnewDependant(newDepeName,newDepeReleation)'>
+            Save</button>
+        </ion-col>
+        </ion-row>
+  </ion-card-content>
+</ion-card>
+
+<ion-card>
+  <ion-card-header>
+    <ion-item  (click)="showPayment= !showPayment">
+      
+        Payment
+      <ion-icon name="card" item-end style="color:orange ;"></ion-icon>
+    </ion-item>
+  </ion-card-header>
+  <ion-card-content *ngIf='showPayment'>
+    <ion-item style="padding: 0px;">
+      <ion-avatar item-start style="margin: 0px;">
+        <img src="../assets/img/upi.jpg" style="height: 80px;width: 80px;">
+      </ion-avatar>
+     <p>{{paymentDetails.upiDetails}}</p> 
+      <ion-icon name="copy" item-right (tap)="copyText(paymentDetails.upiDetails)"></ion-icon>
+    </ion-item>
+    <ion-item >
+     {{paymentDetails.bankName}}
+      
+    </ion-item>
+    <ion-item >
+      <ion-label fixed>Name</ion-label>
+      <ion-input [(value)]='paymentDetails.benifitiaryName' readonly></ion-input>
+        <ion-icon name="copy" item-right (tap)="copyText(paymentDetails.benifitiaryName)"></ion-icon>
+   </ion-item>
+      <ion-item >
+        <ion-label fixed>Number</ion-label>
+        <ion-input [(value)]='paymentDetails.accountId'></ion-input>
+          <ion-icon name="copy" item-right (tap)="copyText(paymentDetails.accountId)" readonly></ion-icon>
+    </ion-item>
+    <ion-item >
+      <ion-label fixed>IFSC</ion-label>
+      <ion-input [(value)]='paymentDetails.ifscCode'></ion-input>
+        <ion-icon name="copy" item-right (tap)="copyText(paymentDetails.ifscCode)" readonly></ion-icon>
+   </ion-item>
+  </ion-card-content>
+</ion-card>
+<ion-card>
+  <ion-card-header>
+    <ion-item>
+      
+LogOut      <ion-icon name="log-out" item-end (click)="logOut()" style="color:orange ;"></ion-icon>
+    </ion-item>
+  </ion-card-header>
+  
+</ion-card>
+</ion-content>

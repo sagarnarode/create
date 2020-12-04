@@ -1,0 +1,187 @@
+page-search {
+    .requestID{
+        font-size: 1.4rem;
+        padding: 0px 5px;
+        height: 2.5rem;
+    }
+    .status{
+        font-size: 1.4rem;
+        padding: 0px 5px;
+        height: 2.5rem;
+        text-align: right;
+    }
+    .Completed
+    {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: #36c77b; 
+        float: right;
+    }
+    .Pending{
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color:lightskyblue; 
+        float: right;
+    }
+    .Cancelled{
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: #f26c4f; 
+        float: right;
+    }
+    .Inprogress{
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: #f8d841; 
+        float: right;
+    }
+ 
+    .status-value{
+        position: relative !important;
+        right: 5px !important;
+    }
+.notification{
+    font-size: 1.3rem;
+    padding: 10px;
+}
+.category-key{
+    padding: 0px 0px 0px 5px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.category-value{
+    padding: 0px 0px 0px 5px;
+    font-size: 1.1rem;
+}
+.category-key-right{
+    padding: 0px 0px 0px 5px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.category-key-right-new{
+    padding: 0px 0px 0px 5px;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+.category-value-right{
+    padding: 0px 0px 0px 5px;
+    font-size: 1.1rem;
+}
+.clear-all{
+    padding: 2px;
+    height: 3.6rem !important;
+    margin: 0px 0px !important;
+    padding: 0px 3px !important;
+   // background-color: color($colors,orange);
+    font-size: 1.3rem !important;
+}
+.message-list{
+    padding-left: 0px !important;
+}
+.button-col{
+    padding: 0px 5px;
+    text-align: right
+}
+img{
+    margin: 0px 5px 0px 0px !important;
+}
+ion-item{
+    background-color: transparent !important;
+}
+ion-item:nth-child(odd){
+    background-color: white !important;
+}
+ion-content > .scroll-content{
+    padding: 5px 0px !important;
+}
+.read-btn{
+    width: 60px;
+    height: 100%;
+    color: white;
+  //  background: color($colors,orange);
+    text-align: center;
+    vertical-align: bottom;
+    border-radius: 5px;
+}
+ion-label{
+    margin-right: 0px !important;
+}
+.search-icon{
+    font-size: 2em;
+    line-height: .67;
+    pointer-events: none;
+    padding-left: 0em;
+}
+button[icon-right]{
+    height: 4.2rem;
+    margin : 0px;
+}
+ion-searchbar > .searchbar-input-container> input.searchbar-input{
+    box-shadow: 0px 0px 0px 0px;
+    -webkit-box-shadow : 0px 0px 0px 0px;
+    background-color: transparent;
+    border-bottom: 1px solid; 
+}
+// .searchBar-item > .item-inner{
+// padding-right: 3px !important;
+// }
+.message-list > .item-inner{
+    padding-right: 3px !important;
+}
+.go-btn{
+    box-shadow: 0px 0px 0px 0px;
+    -webkit-box-shadow : 0px 0px 0px 0px;
+}
+.orange-text {
+    color: #f58220 !important;
+}
+.planName 
+    {
+        display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    }
+    .inbox-provider-logo {
+        max-width: 50% !important;
+    }
+
+span[color='danger']{
+color: red;
+font-weight: 500;
+}
+.active ion-icon.ion-md-funnel {
+    color: #f58220;
+}
+.filterBadgeClass{
+    margin-right: 2px;
+}
+.Denied{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color:red; 
+    float: right;
+}
+ion-item.termination-msg{
+    background-color: transparent !important;
+}
+.Completed1 {
+        
+    background: #f4f7f9;
+    
+    border-left: 8px solid #36c77b;
+}
+.notCompleted 
+{
+    list-style-type: none;
+    border-left: 8px solid  #f8d841;
+    background: #f4f7f9;
+   
+  
+    border-bottom: 1px solid #e1e1e1;
+}
+}
